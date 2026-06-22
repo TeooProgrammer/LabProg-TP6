@@ -42,10 +42,19 @@
                         <td th:text="${servicio.descripcion}">Descripción</td>
                         <td th:text="${servicio.problema}">Problema</td>
                         <td th:text="${servicio.diagnostico}">Diagnóstico</td>
-                        <td>
-                            <span th:if="${servicio.resuelto}" class="badge bg-success">Sí</span>
-                            <span th:unless="${servicio.resuelto}" class="badge bg-warning text-dark">No</span>
+
+                        <td class="text-center">
+                            <img th:if="${servicio.resuelto}"
+                                 th:src="@{/imagenes/resuelto.png}"
+                                 alt="Resuelto"
+                                 width="40">
+
+                            <img th:unless="${servicio.resuelto}"
+                                 th:src="@{/imagenes/no-resuelto.png}"
+                                 alt="No resuelto"
+                                 width="40">
                         </td>
+
                         <td>
                             <a th:href="@{/servicios/editar/{id}(id=${servicio.id})}" class="btn btn-info btn-sm">
                                 Modificar
