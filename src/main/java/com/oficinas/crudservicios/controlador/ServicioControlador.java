@@ -8,16 +8,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.oficinas.crudservicios.modelo.ServicioEntity;
+import com.oficinas.crudservicios.servicio.OficinaServicio;
 import com.oficinas.crudservicios.servicio.Servicio;
+
 // La clase recibe las peticiones y llama al servicio.
 
 @Controller
 public class ServicioControlador {
 
     private final Servicio servicio;
+    private final OficinaServicio oficinaServicio;
 
-    public ServicioControlador(Servicio servicio) {
+    public ServicioControlador(Servicio servicio, OficinaServicio oficinaServicio) {
         this.servicio = servicio;
+        this.oficinaServicio = oficinaServicio;
     }
 
     @GetMapping({"/", "/servicios"})
@@ -29,7 +33,10 @@ public class ServicioControlador {
     @GetMapping("/servicios/nuevo")
     public String mostrarFormularioCrear(Model modelo) {
         ServicioEntity servicioEntity = new ServicioEntity();
+
         modelo.addAttribute("servicio", servicioEntity);
+        modelo.addAttribute("listaOficinas", oficinaServicio.listar());
+
         return "crear";
     }
 
@@ -42,6 +49,8 @@ public class ServicioControlador {
     @GetMapping("/servicios/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable Integer id, Model modelo) {
         modelo.addAttribute("servicio", servicio.obtenerServicioPorId(id));
+        modelo.addAttribute("listaOficinas", oficinaServicio.listar());
+
         return "editar";
     }
 
@@ -56,6 +65,7 @@ public class ServicioControlador {
         servicioExistente.setProblema(servicioEntity.getProblema());
         servicioExistente.setDiagnostico(servicioEntity.getDiagnostico());
         servicioExistente.setResuelto(servicioEntity.isResuelto());
+        servicioExistente.setOficina(servicioEntity.getOficina());
 
         servicio.actualizarServicio(servicioExistente);
 

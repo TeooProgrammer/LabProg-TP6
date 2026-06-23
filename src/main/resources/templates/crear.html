@@ -18,21 +18,36 @@
 
         <div class="card-body">
 
-            <form th:action="@{/servicios}" th:object="${servicio}" method="post">
+            <form th:action="@{/servicios}"
+                  th:object="${servicio}"
+                  method="post"
+                  onsubmit="return validarFormulario()">
 
                 <div class="mb-3">
                     <label class="form-label">Descripción</label>
-                    <input type="text" th:field="*{descripcion}" class="form-control" required>
+                    <input type="text"
+                           id="descripcion"
+                           th:field="*{descripcion}"
+                           class="form-control"
+                           required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Problema</label>
-                    <input type="text" th:field="*{problema}" class="form-control" required>
+                    <input type="text"
+                           id="problema"
+                           th:field="*{problema}"
+                           class="form-control"
+                           required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Diagnóstico</label>
-                    <input type="text" th:field="*{diagnostico}" class="form-control" required>
+                    <input type="text"
+                           id="diagnostico"
+                           th:field="*{diagnostico}"
+                           class="form-control"
+                           required>
                 </div>
 
                 <div class="mb-3">
@@ -68,6 +83,8 @@
     </div>
 
 </div>
+
+<script src="/funciones.js"></script>
 
 </body>
 </html>
