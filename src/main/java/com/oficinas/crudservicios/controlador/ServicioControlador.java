@@ -11,7 +11,7 @@ import com.oficinas.crudservicios.modelo.ServicioEntity;
 import com.oficinas.crudservicios.servicio.OficinaServicio;
 import com.oficinas.crudservicios.servicio.Servicio;
 
-// La clase recibe las peticiones y llama al servicio.
+// la clase recibe las peticiones y llama al servicio
 
 @Controller
 public class ServicioControlador {
@@ -55,8 +55,7 @@ public class ServicioControlador {
     }
 
     @PostMapping("/servicios/{id}")
-    public String actualizarServicio(@PathVariable Integer id,
-                                     @ModelAttribute("servicio") ServicioEntity servicioEntity) {
+    public String actualizarServicio(@PathVariable Integer id, @ModelAttribute("servicio") ServicioEntity servicioEntity) {
 
         ServicioEntity servicioExistente = servicio.obtenerServicioPorId(id);
 

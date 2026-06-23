@@ -9,25 +9,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(
-   name = "oficinas"
-)
+@Table(name = "oficinas")
+
 public class OficinaEntity {
    @Id
-   @GeneratedValue(
-      strategy = GenerationType.IDENTITY
-   )
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer id;
-   @Column(
-      name = "nombre",
-      nullable = false,
-      length = 30,
-      unique = true
-   )
+   
+   @Column(name = "nombre", nullable = false, length = 30, unique = true)
    private String nombre;
 
-   public OficinaEntity() {
-   }
+   public OficinaEntity() { }
 
    public Integer getId() {
       return this.id;
