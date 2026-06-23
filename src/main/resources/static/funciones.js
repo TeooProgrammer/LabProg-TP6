@@ -1,9 +1,9 @@
-// Confirma antes de eliminar los servicios
+// confirma antes de eliminar los servicios
 function confirmarEliminacion() {
     return confirm("¿Desea eliminar este servicio?");
 }
 
-// Valida crear y editar
+// valida crear y editar
 function validarFormulario() {
 
     let descripcion = document.getElementById("descripcion").value.trim();
@@ -15,13 +15,28 @@ function validarFormulario() {
         return false;
     }
 
+    if (descripcion.length > 50) {
+        alert("La descripción no puede superar los 50 caracteres.");
+        return false;
+    }
+
     if (problema.length < 5) {
         alert("El problema debe tener al menos 5 caracteres.");
         return false;
     }
 
+    if (problema.length > 100) {
+        alert("El problema no puede superar los 100 caracteres.");
+        return false;
+    }
+
     if (diagnostico.length < 5) {
         alert("El diagnóstico debe tener al menos 5 caracteres.");
+        return false;
+    }
+
+    if (diagnostico.length > 100) {
+        alert("El diagnóstico no puede superar los 100 caracteres.");
         return false;
     }
 
